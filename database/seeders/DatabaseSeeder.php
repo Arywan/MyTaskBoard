@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Task;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +13,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create 100 users with realistic names and emails
+        User::factory(100)->create();
 
+        // Create a test user with known credentials
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => bcrypt('password123456'),
         ]);
+
+        // Generate some tasks (you can adjust the number)
+        Task::factory(200)->create();
     }
 }
