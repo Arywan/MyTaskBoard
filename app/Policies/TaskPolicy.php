@@ -8,7 +8,7 @@ use App\Models\User;
 class TaskPolicy
 {
     /**
-     * تحديد من يمكنه عرض المهمة.
+     * Determine if the user can view the task.
      */
     public function view(User $user, Task $task)
     {
@@ -16,7 +16,15 @@ class TaskPolicy
     }
 
     /**
-     * تحديد من يمكنه تعديل المهمة.
+     * Determine if the user can create a new task.
+     */
+    public function create(User $user)
+    {
+        return true; // Allow all authenticated users to create tasks
+    }
+
+    /**
+     * Determine if the user can update the task.
      */
     public function update(User $user, Task $task)
     {
@@ -24,7 +32,7 @@ class TaskPolicy
     }
 
     /**
-     * تحديد من يمكنه حذف المهمة.
+     * Determine if the user can delete the task.
      */
     public function delete(User $user, Task $task)
     {
